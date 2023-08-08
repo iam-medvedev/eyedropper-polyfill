@@ -1,0 +1,11 @@
+{
+  "name": "eyedropper-polyfill",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@3.6.1"
+}
