@@ -143,8 +143,11 @@ export class EyeDropperPolyfill implements EyeDropper {
   private revertWaitingCursor() {
     if (this.previousDocumentCursor) {
       document.documentElement.style.cursor = this.previousDocumentCursor;
-      this.previousDocumentCursor = undefined;
+    } else {
+      document.documentElement.style.cursor = "";
     }
+
+    this.previousDocumentCursor = undefined;
   }
 
   /**
