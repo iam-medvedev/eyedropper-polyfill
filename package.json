@@ -2,7 +2,7 @@
   "name": "eyedropper-polyfill",
   "version": "0.0.1",
   "author": "Ilya Medvedev <ilya@medvedev.im>",
-  "description": "esbuild plugin for less files",
+  "description": "EyeDropper API Polyfill",
   "repository": "https://github.com/iam-medvedev/eyedropper-polyfill.git",
   "homepage": "https://github.com/iam-medvedev/eyedropper-polyfill#readme",
   "bugs": "https://github.com/iam-medvedev/eyedropper-polyfill/issues",
