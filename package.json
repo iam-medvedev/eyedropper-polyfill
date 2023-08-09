@@ -1,6 +1,6 @@
 {
   "name": "eyedropper-polyfill",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ilya Medvedev <ilya@medvedev.im>",
   "description": "EyeDropper API Polyfill",
   "repository": "https://github.com/iam-medvedev/eyedropper-polyfill.git",
