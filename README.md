@@ -2,7 +2,7 @@
 
 `eyedropper-polyfill` provides a polyfill implementation for the [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper), allowing you to capture colors from any part of a webpage.
 
-This package is particularly useful for scenarios where the EyeDropper API is not natively [supported](https://caniuse.com/mdn-api_eyedropper) by the browser.
+This package was inspired by the EyeDropper API and the need for a consistent color selection mechanism across various browsers where the EyeDropper API is not [natively supported](https://caniuse.com/mdn-api_eyedropper).
 
 ## Table of Contents
 
@@ -13,9 +13,9 @@ This package is particularly useful for scenarios where the EyeDropper API is no
   - [Usage](#usage)
     - [Opening the EyeDropper](#opening-the-eyedropper)
     - [Aborting](#aborting)
-  - [License](#license)
+  - [Limitations](#limitations)
   - [Contributing](#contributing)
-  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
 
 ## Features
 
@@ -27,13 +27,21 @@ This package is particularly useful for scenarios where the EyeDropper API is no
 ## Installation
 
 ```bash
-npm install eyedropper-polyfill
+yarn add eyedropper-polyfill
 ```
 
 or
 
 ```bash
-yarn add eyedropper-polyfill
+npm install eyedropper-polyfill
+```
+
+or
+
+```typescript
+import 'https://unpkg.com/eyedropper-polyfill';
+// or
+import 'https://unpkg.com/eyedropper-polyfill';
 ```
 
 ## Usage
@@ -89,14 +97,14 @@ eyeDropper
   });
 ```
 
-## License
+## Limitations
 
-This package is distributed under the [MIT License](https://opensource.org/licenses/MIT).
+Since this package is based on [html2canvas](https://html2canvas.hertzen.com), you can look at their [limitations](https://html2canvas.hertzen.com/documentation.html#limitations).
 
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/iam-medvedev/eyedropper-polyfill).
 
-## Acknowledgements
+## License
 
-This package was inspired by the EyeDropper API and the need for a consistent color selection mechanism across various browsers.
+This package is distributed under the [MIT License](https://opensource.org/licenses/MIT).
