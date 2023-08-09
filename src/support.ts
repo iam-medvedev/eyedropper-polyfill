@@ -1,3 +1,3 @@
 export function isEyeDropperSupported(): boolean {
-  return "EyeDropper" in window;
+  return 'EyeDropper' in window;
 }

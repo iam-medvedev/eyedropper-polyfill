@@ -1,5 +1,5 @@
-import { isEyeDropperSupported } from "./support";
-import { attachPolyfill } from "./attach";
+import { isEyeDropperSupported } from './support';
+import { attachPolyfill } from './attach';
 
 if (!isEyeDropperSupported()) {
   attachPolyfill();

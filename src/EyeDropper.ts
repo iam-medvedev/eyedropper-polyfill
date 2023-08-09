@@ -1,5 +1,5 @@
 import { Magnifier } from './magnifier';
-import { addCanvasStyle, errors, type Point } from './utils';
+import { errors, type Point } from './utils';
 import html2canvas from 'html2canvas';
 
 interface ColorSelectionOptions {
@@ -83,6 +83,7 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Starting eyedropper mode
    */
   private async start() {
+    document.body.style.overflow = 'hidden';
     this.setWaitingCursor();
     await this.createScreenshot();
     this.revertWaitingCursor();
@@ -95,6 +96,7 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Stopping eyedropper mode
    */
   private stop() {
+    document.body.style.overflow = '';
     this.unbindEvents();
     this.removeScreenshot();
     this.magnifier?.destroy();
@@ -113,7 +115,7 @@ export class EyeDropperPolyfill implements EyeDropper {
       width: window.innerWidth,
     });
 
-    addCanvasStyle(this.canvas, 'screenshot');
+    this.addCanvasStyle(this.canvas);
     this.canvasCtx = this.canvas.getContext('2d', {
       willReadFrequently: true,
     });
@@ -186,8 +188,8 @@ export class EyeDropperPolyfill implements EyeDropper {
    * `mousemove` handler
    */
   private onMouseMove(event: MouseEvent) {
-    const x = event.clientX * window.devicePixelRatio;
-    const y = event.clientY * window.devicePixelRatio;
+    const x = (event.clientX + window.scrollX) * window.devicePixelRatio;
+    const y = (event.clientY + window.scrollY) * window.devicePixelRatio;
 
     if (!this.canvas || !this.canvasCtx) {
       throw new Error(errors.canvasError);
@@ -216,5 +218,20 @@ export class EyeDropperPolyfill implements EyeDropper {
     this.colorSelectionResult = {
       sRGBHex: `#${hex}`,
     };
+  }
+  /**
+   * Canvas styles creator
+   */
+  private addCanvasStyle(canvas: HTMLCanvasElement) {
+    Object.assign(canvas.style, {
+      position: 'fixed',
+      top: '0px',
+      marginTop: `${-window.scrollY}px`,
+      left: '0px',
+      zIndex: 999999,
+      opacity: 0,
+      width: '100%',
+      height: '100%',
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { addCanvasStyle, errors, type Point } from "./utils";
+import { errors, type Point } from './utils';
 
 /**
  * Creates a magnifying glass effect
@@ -16,12 +16,21 @@ export class Magnifier {
     }
 
     this.originalCanvas = originalCanvas;
-    this.canvas = document.createElement("canvas");
+    this.canvas = document.createElement('canvas');
     this.canvas.width = this.originalCanvas.width;
     this.canvas.height = this.originalCanvas.height;
-    addCanvasStyle(this.canvas, "magnifier");
+    Object.assign(this.canvas.style, {
+      width: originalCanvas.style.width,
+      height: originalCanvas.style.height,
+      top: originalCanvas.style.top,
+      left: originalCanvas.style.left,
+      marginTop: originalCanvas.style.marginTop,
+      position: originalCanvas.style.position,
+      opacity: 1,
+      zIndex: originalCanvas.style.zIndex + 1,
+    });
     document.body.append(this.canvas);
-    const ctx = this.canvas.getContext("2d", {
+    const ctx = this.canvas.getContext('2d', {
       willReadFrequently: true,
     });
     if (!ctx) {
@@ -62,14 +71,14 @@ export class Magnifier {
       point.x - this.radius,
       point.y - this.radius,
       this.radius * 2,
-      this.radius * 2
+      this.radius * 2,
     );
 
     // Restore the magnifier context state
     this.canvasCtx.restore();
 
     // Draw the magnifier circle
-    this.canvasCtx.strokeStyle = "#665F75";
+    this.canvasCtx.strokeStyle = '#665F75';
     this.canvasCtx.lineWidth = 2;
     this.canvasCtx.beginPath();
     this.canvasCtx.arc(point.x, point.y, this.radius, 0, 2 * Math.PI);

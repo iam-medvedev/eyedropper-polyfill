@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eyedropper-polyfill demo</title>
+    <style>
+      body {
+        height: 5000px;
+      }
+
+      button {
+        position: fixed;
+        top: 0;
+      }
+    </style>
   </head>
   <body>
     <button id="eyedropper">Get color</button>
@@ -11,12 +21,7 @@
     <br />
     <br />
 
-    <iframe
-      width="560"
-      height="300"
-      src="https://www.youtube.com/embed/YE7VzlLtp-4"
-      frameborder="0"
-    ></iframe>
+    <iframe width="560" height="300" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0"></iframe>
 
     <img src="https://picsum.photos/id/1/200/300" />
     <img src="https://picsum.photos/id/235/200/300" />
@@ -24,12 +29,12 @@
     <img src="https://picsum.photos/id/238/200/300" />
 
     <script type="module">
-      import { attachPolyfill } from "../src/attach";
+      import { attachPolyfill } from '../src/attach';
 
       attachPolyfill();
 
-      const eyeDropperBtn = document.getElementById("eyedropper");
-      const resultPreview = document.getElementById("result");
+      const eyeDropperBtn = document.getElementById('eyedropper');
+      const resultPreview = document.getElementById('result');
       const eyeDropperInstance = new EyeDropper();
       eyeDropperBtn.onclick = async () => {
         const result = await eyeDropperInstance.open();
