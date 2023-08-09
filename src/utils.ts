@@ -27,8 +27,7 @@ export function addCanvasStyle(
     zIndex: 999999 + (type === "screenshot" ? 1 : 2),
     userSelect: "none",
     pointerEvent: "none",
-    // TODO: 0?
-    // opacity: 1,
+    opacity: type === "screenshot" ? 0 : 1,
     width: "100%",
     height: "100%",
   });

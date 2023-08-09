@@ -7,7 +7,7 @@ export class Magnifier {
   private originalCanvas: HTMLCanvasElement;
   private canvas: HTMLCanvasElement;
   private canvasCtx: CanvasRenderingContext2D;
-  private magnification = 4;
+  private magnification = 10;
   private radius = 120;
 
   constructor(originalCanvas?: HTMLCanvasElement) {
