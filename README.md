@@ -41,7 +41,7 @@ yarn add eyedropper-polyfill
 Import the `EyeDropperPolyfill` from the package:
 
 ```typescript
-import "eyedropper-polyfill";
+import 'eyedropper-polyfill';
 ```
 
 It will create EyeDropper support via `window.EyeDropper`.
@@ -55,10 +55,10 @@ eyeDropper
   .open()
   .then((colorSelectionResult) => {
     // Use the selected color information
-    console.log("Selected color:", colorSelectionResult.sRGBHex);
+    console.log('Selected color:', colorSelectionResult.sRGBHex);
   })
   .catch((error) => {
-    console.error("Error:", error);
+    console.error('Error:', error);
   });
 ```
 
@@ -78,13 +78,13 @@ eyeDropper
   .open({ signal })
   .then((colorSelectionResult) => {
     // Use the selected color information
-    console.log("Selected color:", colorSelectionResult.sRGBHex);
+    console.log('Selected color:', colorSelectionResult.sRGBHex);
   })
   .catch((error) => {
-    if (error.name === "AbortError") {
-      console.log("Operation was aborted.");
+    if (error.name === 'AbortError') {
+      console.log('Operation was aborted.');
     } else {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   });
 ```
