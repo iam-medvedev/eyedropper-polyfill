@@ -1,4 +1,4 @@
-import { Magnifier } from "./Magnifier";
+import { Magnifier } from "./magnifier";
 import { addCanvasStyle, errors, type Point } from "./utils";
 import html2canvas from "html2canvas";
 

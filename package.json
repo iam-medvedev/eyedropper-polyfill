@@ -1,6 +1,7 @@
 {
   "name": "eyedropper-polyfill",
   "version": "0.0.1",
+  "author": "Ilya Medvedev <ilya@medvedev.im>",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

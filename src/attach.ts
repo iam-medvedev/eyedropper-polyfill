@@ -1,4 +1,4 @@
-import { EyeDropperPolyfill } from "./EyeDropper";
+import { EyeDropperPolyfill } from "./eyedropper";
 
 export function attachPolyfill() {
   if (
