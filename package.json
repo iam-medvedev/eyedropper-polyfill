@@ -12,8 +12,8 @@
     "polyfill",
     "colorpicker"
   ],
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/eyedropper-polyfill.umd.js",
+  "module": "./dist/eyedropper-polyfill.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "parcel ./demo/index.html",
