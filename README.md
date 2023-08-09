@@ -40,8 +40,6 @@ or
 
 ```typescript
 import 'https://unpkg.com/eyedropper-polyfill';
-// or
-import 'https://unpkg.com/eyedropper-polyfill';
 ```
 
 ## Usage
