@@ -3,9 +3,17 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "parcel ./demo/index.html"
+  },
   "devDependencies": {
+    "parcel": "^2.9.3",
     "prettier": "^3.0.1",
+    "process": "^0.11.10",
     "typescript": "^5.1.6"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  }
 }
