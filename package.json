@@ -12,6 +12,11 @@
     "polyfill",
     "colorpicker"
   ],
+  "files": [
+    "./dist",
+    "./package.json",
+    "./README.md"
+  ],
   "main": "./dist/eyedropper-polyfill.umd.js",
   "module": "./dist/eyedropper-polyfill.mjs",
   "types": "./dist/index.d.ts",
