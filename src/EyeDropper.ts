@@ -1,6 +1,18 @@
-import { Magnifier } from "./magnifier";
-import { addCanvasStyle, errors, type Point } from "./utils";
-import html2canvas from "html2canvas";
+import { Magnifier } from './magnifier';
+import { addCanvasStyle, errors, type Point } from './utils';
+import html2canvas from 'html2canvas';
+
+interface ColorSelectionOptions {
+  signal?: AbortSignal;
+}
+
+interface ColorSelectionResult {
+  sRGBHex: string;
+}
+
+interface EyeDropper {
+  open(options?: ColorSelectionOptions): Promise<ColorSelectionResult>;
+}
 
 /** Global `isOpen` state */
 const isOpenState = {
@@ -13,7 +25,7 @@ const isOpenState = {
  */
 export class EyeDropperPolyfill implements EyeDropper {
   private colorSelectionResult?: ColorSelectionResult;
-  private previousDocumentCursor?: CSSStyleDeclaration["cursor"];
+  private previousDocumentCursor?: CSSStyleDeclaration['cursor'];
   private canvas?: HTMLCanvasElement;
   private canvasCtx?: CanvasRenderingContext2D | null;
   private resolve?: (result: ColorSelectionResult) => void;
@@ -29,15 +41,11 @@ export class EyeDropperPolyfill implements EyeDropper {
    *
    * §3.3 EyeDropper interface ► `open()`
    */
-  public async open(
-    options: ColorSelectionOptions = {}
-  ): Promise<ColorSelectionResult> {
+  public async open(options: ColorSelectionOptions = {}): Promise<ColorSelectionResult> {
     // §3.3 EyeDropper interface ► `open()` ► p.2
     // Prevent opening if already open
     if (isOpenState.value) {
-      return Promise.reject(
-        new DOMException("Invalid state", "InvalidStateError")
-      );
+      return Promise.reject(new DOMException('Invalid state', 'InvalidStateError'));
     }
 
     // §3.3 EyeDropper interface ► `open()` ► p.3
@@ -49,21 +57,17 @@ export class EyeDropperPolyfill implements EyeDropper {
         if (options.signal.aborted) {
           this.stop();
 
-          return reject(
-            options.signal.reason || new DOMException("Aborted", "AbortError")
-          );
+          return reject(options.signal.reason || new DOMException('Aborted', 'AbortError'));
         }
 
         const abortListener = () => {
           this.stop();
           if (options.signal) {
-            reject(
-              options.signal.reason || new DOMException("Aborted", "AbortError")
-            );
+            reject(options.signal.reason || new DOMException('Aborted', 'AbortError'));
           }
         };
 
-        options.signal.addEventListener("abort", abortListener);
+        options.signal.addEventListener('abort', abortListener);
       }
 
       // §3.3 EyeDropper interface ► `open()` ► p.5
@@ -109,8 +113,8 @@ export class EyeDropperPolyfill implements EyeDropper {
       width: window.innerWidth,
     });
 
-    addCanvasStyle(this.canvas, "screenshot");
-    this.canvasCtx = this.canvas.getContext("2d", {
+    addCanvasStyle(this.canvas, 'screenshot');
+    this.canvasCtx = this.canvas.getContext('2d', {
       willReadFrequently: true,
     });
     document.body.appendChild(this.canvas);
@@ -134,7 +138,7 @@ export class EyeDropperPolyfill implements EyeDropper {
    */
   private setWaitingCursor() {
     this.previousDocumentCursor = document.documentElement.style.cursor;
-    document.documentElement.style.cursor = "wait";
+    document.documentElement.style.cursor = 'wait';
   }
 
   /**
@@ -144,7 +148,7 @@ export class EyeDropperPolyfill implements EyeDropper {
     if (this.previousDocumentCursor) {
       document.documentElement.style.cursor = this.previousDocumentCursor;
     } else {
-      document.documentElement.style.cursor = "";
+      document.documentElement.style.cursor = '';
     }
 
     this.previousDocumentCursor = undefined;
@@ -154,16 +158,16 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Binds events
    */
   private bindEvents() {
-    window.addEventListener("mousemove", this.onMouseMove);
-    window.addEventListener("click", this.onClick);
+    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('click', this.onClick);
   }
 
   /**
    * Unbinds `mousemove` events
    */
   private unbindEvents() {
-    window.removeEventListener("mousemove", this.onMouseMove);
-    window.removeEventListener("click", this.onClick);
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('click', this.onClick);
   }
 
   /**
@@ -207,9 +211,7 @@ export class EyeDropperPolyfill implements EyeDropper {
     const green = pixelData[1];
     const blue = pixelData[2];
 
-    const hex = ((1 << 24) + (red << 16) + (green << 8) + blue)
-      .toString(16)
-      .slice(1);
+    const hex = ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
 
     this.colorSelectionResult = {
       sRGBHex: `#${hex}`,

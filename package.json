@@ -2,19 +2,50 @@
   "name": "eyedropper-polyfill",
   "version": "0.0.1",
   "author": "Ilya Medvedev <ilya@medvedev.im>",
-  "main": "index.js",
+  "description": "esbuild plugin for less files",
+  "repository": "https://github.com/iam-medvedev/eyedropper-polyfill.git",
+  "homepage": "https://github.com/iam-medvedev/eyedropper-polyfill#readme",
+  "bugs": "https://github.com/iam-medvedev/eyedropper-polyfill/issues",
   "license": "MIT",
+  "keywords": [
+    "eyedropper",
+    "polyfill",
+    "colorpicker"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "parcel ./demo/index.html"
+    "dev": "parcel ./demo/index.html",
+    "build": "NODE_ENV=production vite build"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "10.0.1",
+    "@semantic-release/github": "9.0.4",
+    "@semantic-release/npm": "10.0.4",
+    "@semantic-release/release-notes-generator": "11.0.4",
+    "@types/node": "^20.4.9",
     "parcel": "^2.9.3",
     "prettier": "^3.0.1",
     "process": "^0.11.10",
-    "typescript": "^5.1.6"
+    "rollup-plugin-uglify": "^6.0.4",
+    "semantic-release": "21.0.6",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.1"
   },
-  "packageManager": "yarn@3.6.1",
   "dependencies": {
     "html2canvas": "^1.4.1"
-  }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
+  },
+  "volta": {
+    "node": "20.5.1",
+    "yarn": "1.22.19"
+  },
+  "packageManager": "yarn@3.6.1"
 }
