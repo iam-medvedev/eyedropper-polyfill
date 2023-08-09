@@ -1,9 +1,6 @@
+import { Magnifier } from "./Magnifier";
+import { addCanvasStyle, errors, type Point } from "./utils";
 import html2canvas from "html2canvas";
-
-type Point = {
-  x: number;
-  y: number;
-};
 
 /** Global `isOpen` state */
 const isOpenState = {
@@ -18,13 +15,9 @@ export class EyeDropperPolyfill implements EyeDropper {
   private colorSelectionResult?: ColorSelectionResult;
   private previousDocumentCursor?: CSSStyleDeclaration["cursor"];
   private canvas?: HTMLCanvasElement;
-  private canvasCtx?: CanvasRenderingContext2D;
-  private magnifier?: HTMLCanvasElement;
-  private magnifierCtx?: CanvasRenderingContext2D;
+  private canvasCtx?: CanvasRenderingContext2D | null;
   private resolve?: (result: ColorSelectionResult) => void;
-  private magnification = 2;
-  private magnifierRadius = 50;
-  private magnifierBorderWidth = 2;
+  private magnifier?: Magnifier;
 
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -32,7 +25,7 @@ export class EyeDropperPolyfill implements EyeDropper {
   }
 
   /**
-   * Opens polyfilled eyedropper
+   * Opens the polyfilled eyedropper
    *
    * §3.3 EyeDropper interface ► `open()`
    */
@@ -40,6 +33,7 @@ export class EyeDropperPolyfill implements EyeDropper {
     options: ColorSelectionOptions = {}
   ): Promise<ColorSelectionResult> {
     // §3.3 EyeDropper interface ► `open()` ► p.2
+    // Prevent opening if already open
     if (isOpenState.value) {
       return Promise.reject(
         new DOMException("Invalid state", "InvalidStateError")
@@ -47,8 +41,10 @@ export class EyeDropperPolyfill implements EyeDropper {
     }
 
     // §3.3 EyeDropper interface ► `open()` ► p.3
+    // Create a promise to handle the color selection
     const result = new Promise<ColorSelectionResult>((resolve, reject) => {
       // §3.3 EyeDropper interface ► `open()` ► p.4
+      // Handle possible signal abortion
       if (options.signal) {
         if (options.signal.aborted) {
           this.stop();
@@ -60,15 +56,18 @@ export class EyeDropperPolyfill implements EyeDropper {
 
         const abortListener = () => {
           this.stop();
-          reject(
-            options.signal.reason || new DOMException("Aborted", "AbortError")
-          );
+          if (options.signal) {
+            reject(
+              options.signal.reason || new DOMException("Aborted", "AbortError")
+            );
+          }
         };
 
         options.signal.addEventListener("abort", abortListener);
       }
 
       // §3.3 EyeDropper interface ► `open()` ► p.5
+      // Store the resolve function and start the eyedropper
       this.resolve = resolve;
       this.start();
     });
@@ -84,6 +83,8 @@ export class EyeDropperPolyfill implements EyeDropper {
     await this.createScreenshot();
     this.revertWaitingCursor();
     this.bindEvents();
+
+    this.magnifier = new Magnifier(this.canvas);
   }
 
   /**
@@ -92,6 +93,7 @@ export class EyeDropperPolyfill implements EyeDropper {
   private stop() {
     this.unbindEvents();
     this.removeScreenshot();
+    this.magnifier?.destroy();
     this.colorSelectionResult = undefined;
     isOpenState.value = false;
   }
@@ -107,8 +109,10 @@ export class EyeDropperPolyfill implements EyeDropper {
       width: window.innerWidth,
     });
 
-    this.addCanvasStyle(this.canvas, "screenshot");
-    this.canvasCtx = this.canvas.getContext("2d");
+    addCanvasStyle(this.canvas, "screenshot");
+    this.canvasCtx = this.canvas.getContext("2d", {
+      willReadFrequently: true,
+    });
     document.body.appendChild(this.canvas);
   }
 
@@ -116,6 +120,10 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Removes screenshot from page
    */
   private removeScreenshot() {
+    if (!this.canvas) {
+      throw new Error(errors.canvasError);
+    }
+
     document.body.removeChild(this.canvas);
     this.canvas = undefined;
     this.canvasCtx = undefined;
@@ -133,8 +141,10 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Removes waiting cursor
    */
   private revertWaitingCursor() {
-    document.documentElement.style.cursor = this.previousDocumentCursor;
-    this.previousDocumentCursor = null;
+    if (this.previousDocumentCursor) {
+      document.documentElement.style.cursor = this.previousDocumentCursor;
+      this.previousDocumentCursor = undefined;
+    }
   }
 
   /**
@@ -160,7 +170,7 @@ export class EyeDropperPolyfill implements EyeDropper {
     const newValue = this.colorSelectionResult;
     this.stop();
 
-    if (this.resolve) {
+    if (newValue && this.resolve) {
       this.resolve(newValue);
     }
   }
@@ -173,36 +183,21 @@ export class EyeDropperPolyfill implements EyeDropper {
     const y = event.clientY * window.devicePixelRatio;
 
     if (!this.canvas || !this.canvasCtx) {
-      throw new Error("Error getting canvas while using `EyeDropper` polyfill");
+      throw new Error(errors.canvasError);
     }
 
+    this.magnifier?.move({ x, y });
     this.detectColor({ x, y });
-  }
-
-  private addCanvasStyle(
-    canvas: HTMLCanvasElement,
-    type: "screenshot" | "magnifier"
-  ) {
-    Object.assign(canvas.style, {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: 999999 + type === "screenshot" ? 1 : 2,
-      userSelect: "none",
-      pointerEvent: "none",
-      // TODO: 0?
-      // opacity: 1,
-      width: "100%",
-      height: "100%",
-    });
   }
 
   /**
    * Detects color from canvas data
    */
   private detectColor(point: Point) {
+    if (!this.canvasCtx) {
+      throw new Error(errors.canvasError);
+    }
+
     const pixelData = this.canvasCtx.getImageData(point.x, point.y, 1, 1).data;
 
     const red = pixelData[0];
