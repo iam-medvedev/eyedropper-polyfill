@@ -4,6 +4,8 @@
 
 This package was inspired by the EyeDropper API and the need for a consistent color selection mechanism across various browsers where the EyeDropper API is not [natively supported](https://caniuse.com/mdn-api_eyedropper).
 
+[DEMO](https://stackblitz.com/edit/vitejs-vite-qwd1pv?file=main.js)
+
 ## Table of Contents
 
 - [`eyedropper-polyfill`](#eyedropper-polyfill)
@@ -39,7 +41,7 @@ npm install eyedropper-polyfill
 or
 
 ```typescript
-import 'https://unpkg.com/eyedropper-polyfill';
+import 'https://esm.sh/eyedropper-polyfill@latest';
 ```
 
 ## Usage
