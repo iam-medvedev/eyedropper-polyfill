@@ -7,6 +7,6 @@ export type Point = {
  * Errors text
  */
 export const errors = {
-  canvasError: 'Error getting canvas while using `EyeDropper` polyfill',
-  magnifier: 'Cannot create magnifier while using `EyeDropper` polyfill',
+  canvasError: '[EyeDropper] Error getting canvas',
+  magnifier: '[EyeDropper] Cannot create magnifier',
 };

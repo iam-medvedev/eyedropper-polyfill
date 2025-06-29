@@ -23,23 +23,23 @@
   "scripts": {
     "dev": "parcel ./demo/index.html",
     "build": "NODE_ENV=production vite build",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "types": "tsc --noEmit"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/commit-analyzer": "10.0.1",
-    "@semantic-release/github": "9.0.4",
-    "@semantic-release/npm": "10.0.4",
-    "@semantic-release/release-notes-generator": "11.0.4",
-    "@types/node": "^20.4.9",
-    "parcel": "^2.9.3",
-    "prettier": "^3.0.1",
-    "process": "^0.11.10",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/github": "11.0.3",
+    "@semantic-release/npm": "12.0.2",
+    "@semantic-release/release-notes-generator": "14.0.3",
+    "@types/node": "^24.0.7",
+    "parcel": "^2.15.4",
+    "prettier": "^3.6.2",
     "rollup-plugin-uglify": "^6.0.4",
-    "semantic-release": "^21.0.7",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.9",
-    "vite-plugin-dts": "^3.5.1"
+    "semantic-release": "^24.2.5",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
     "html2canvas": "^1.4.1"
@@ -50,8 +50,8 @@
     "printWidth": 120
   },
   "volta": {
-    "node": "20.5.1",
+    "node": "24.3.0",
     "yarn": "1.22.19"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@4.9.2"
 }
