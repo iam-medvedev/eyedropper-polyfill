@@ -1,18 +1,11 @@
-import { Magnifier } from './magnifier';
-import { errors, type Point } from './utils';
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas-pro';
+import { errors, px } from './utils';
+import type { EyeDropper, ColorSelectionOptions, ColorSelectionResult } from './types';
 
-interface ColorSelectionOptions {
-  signal?: AbortSignal;
-}
-
-interface ColorSelectionResult {
-  sRGBHex: string;
-}
-
-interface EyeDropper {
-  open(options?: ColorSelectionOptions): Promise<ColorSelectionResult>;
-}
+type Point = {
+  x: number;
+  y: number;
+};
 
 /** Global `isOpen` state */
 const isOpenState = {
@@ -29,7 +22,11 @@ export class EyeDropperPolyfill implements EyeDropper {
   private canvas?: HTMLCanvasElement;
   private canvasCtx?: CanvasRenderingContext2D | null;
   private resolve?: (result: ColorSelectionResult) => void;
-  private magnifier?: Magnifier;
+  private lastPoint?: Point;
+  private magnification = {
+    size: 4,
+    scale: 12,
+  };
 
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -88,8 +85,6 @@ export class EyeDropperPolyfill implements EyeDropper {
     await this.createScreenshot();
     this.revertWaitingCursor();
     this.bindEvents();
-
-    this.magnifier = new Magnifier(this.canvas);
   }
 
   /**
@@ -99,8 +94,8 @@ export class EyeDropperPolyfill implements EyeDropper {
     document.body.style.overflow = '';
     this.unbindEvents();
     this.removeScreenshot();
-    this.magnifier?.destroy();
     this.colorSelectionResult = undefined;
+    this.lastPoint = undefined;
     isOpenState.value = false;
   }
 
@@ -108,11 +103,11 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Creates fake screenshot of page and assign it to the body
    */
   private async createScreenshot() {
-    this.canvas = await html2canvas(document.documentElement, {
+    this.canvas = await html2canvas(document.body, {
       allowTaint: true,
       useCORS: true,
-      height: window.innerHeight,
-      width: window.innerWidth,
+      height: document.body.scrollHeight,
+      width: document.body.scrollWidth,
     });
 
     this.addCanvasStyle(this.canvas);
@@ -176,6 +171,11 @@ export class EyeDropperPolyfill implements EyeDropper {
    * `click` handler
    */
   private onClick() {
+    if (!this.lastPoint) {
+      throw new Error(errors.color);
+    }
+
+    this.detectColor(this.lastPoint);
     const newValue = this.colorSelectionResult;
     this.stop();
 
@@ -188,15 +188,24 @@ export class EyeDropperPolyfill implements EyeDropper {
    * `mousemove` handler
    */
   private onMouseMove(event: MouseEvent) {
-    const x = (event.clientX + window.scrollX) * window.devicePixelRatio;
-    const y = (event.clientY + window.scrollY) * window.devicePixelRatio;
-
     if (!this.canvas || !this.canvasCtx) {
       throw new Error(errors.canvasError);
     }
 
-    this.magnifier?.move({ x, y });
-    this.detectColor({ x, y });
+    const dpr = window.devicePixelRatio;
+    this.lastPoint = {
+      x: (event.clientX + window.scrollX) * dpr,
+      y: (event.clientY + window.scrollY) * dpr,
+    };
+
+    // Move magnifier
+    // const position = `${this.lastPoint.x / dpr} ${this.lastPoint.y / dpr}px`;
+    const position = [px(this.lastPoint.x / dpr), px(this.lastPoint.y / dpr)].join(' ');
+    Object.assign(this.canvas.style, {
+      opacity: 1,
+      transformOrigin: position,
+      clipPath: `circle(${px(this.magnification.size)} at ${position})`,
+    });
   }
 
   /**
@@ -230,8 +239,8 @@ export class EyeDropperPolyfill implements EyeDropper {
       left: '0px',
       zIndex: 999999,
       opacity: 0,
-      width: '100%',
-      height: '100%',
+      transform: `scale(${this.magnification.scale})`,
+      imageRendering: 'pixelated',
     });
   }
 }

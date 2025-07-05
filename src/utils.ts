@@ -1,12 +1,16 @@
-export type Point = {
-  x: number;
-  y: number;
-};
+const prefix = `[EyeDropper]`;
 
 /**
  * Errors text
  */
 export const errors = {
-  canvasError: '[EyeDropper] Error getting canvas',
-  magnifier: '[EyeDropper] Cannot create magnifier',
+  canvasError: `${prefix} Error getting canvas`,
+  color: `${prefix} Cannot get color`,
 };
+
+/**
+ * Returns px value
+ */
+export function px<T extends number>(value: T): `${T}px` {
+  return `${value}px`;
+}

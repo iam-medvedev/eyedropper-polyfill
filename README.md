@@ -99,7 +99,7 @@ eyeDropper
 
 ## Limitations
 
-Since this package is based on [html2canvas](https://html2canvas.hertzen.com), you can look at their [limitations](https://html2canvas.hertzen.com/documentation.html#limitations).
+Since this package is based on [html2canvas-pro](https://yorickshan.github.io/html2canvas-pro/), you can look at their [limitations](https://html2canvas.hertzen.com/documentation.html#limitations).
 
 ## Contributing
 

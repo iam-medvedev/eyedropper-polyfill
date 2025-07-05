@@ -18,7 +18,7 @@ export default defineConfig({
     sourcemap: !isProduction,
     rollupOptions: {
       plugins: [uglify()],
-      external: ['html2canvas'],
+      external: ['html2canvas-pro'],
     },
   },
 });

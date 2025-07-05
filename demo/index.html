@@ -9,39 +9,13 @@
         height: 5000px;
       }
 
-      button {
-        position: fixed;
-        top: 0;
+      .tp-dfwv {
+        position: fixed !important;
       }
     </style>
   </head>
   <body>
-    <button id="eyedropper">Get color</button>
-    <div id="result"></div>
-    <br />
-    <br />
-
-    <iframe width="560" height="300" src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0"></iframe>
-
-    <img src="https://picsum.photos/id/1/200/300" />
-    <img src="https://picsum.photos/id/235/200/300" />
-    <img src="https://picsum.photos/id/237/200/300" />
-    <img src="https://picsum.photos/id/238/200/300" />
-
-    <script type="module">
-      import { attachPolyfill } from '../src/attach';
-
-      attachPolyfill();
-
-      const eyeDropperBtn = document.getElementById('eyedropper');
-      const resultPreview = document.getElementById('result');
-      const eyeDropperInstance = new EyeDropper();
-      eyeDropperBtn.onclick = async () => {
-        const result = await eyeDropperInstance.open();
-        const color = result.sRGBHex;
-        resultPreview.style.background = color;
-        resultPreview.innerText = color;
-      };
-    </script>
+    <main></main>
+    <script type="module" src="./demo.ts"></script>
   </body>
 </html>
