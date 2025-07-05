@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "parcel ./demo/index.html",
     "build": "NODE_ENV=production vite build",
-    "build:pages": "parcel build demo/index.html --target default",
+    "build:pages": "parcel build demo/index.html --target default --public-url .",
     "release": "semantic-release",
     "types": "tsc --noEmit",
     "test:browser": "vitest --project=browser",

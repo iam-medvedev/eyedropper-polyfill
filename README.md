@@ -6,7 +6,7 @@ This package was inspired by the EyeDropper API and the need for a consistent co
 
 <img src="https://raw.githubusercontent.com/iam-medvedev/eyedropper-polyfill/refs/heads/main/demo/preview.gif" width="500" />
 
-[DEMO](https://stackblitz.com/edit/vitejs-vite-qwd1pv?file=main.js)
+[DEMO](https://iam-medvedev.github.io/eyedropper-polyfill/)
 
 ## Table of Contents
 
