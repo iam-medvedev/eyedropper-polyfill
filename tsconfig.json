@@ -6,6 +6,6 @@
     "target": "es2017",
     "strict": true
   },
-  "include": ["src"],
+  "include": ["src", "demo", "window.d.ts"],
   "exclude": ["node_modules", "build"]
 }

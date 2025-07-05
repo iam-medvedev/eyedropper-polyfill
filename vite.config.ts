@@ -7,7 +7,11 @@ const outDir = path.resolve(__dirname, './dist');
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [
+    dts({
+      tsconfigPath: path.resolve(__dirname, './tsconfig.build.json'),
+    }),
+  ],
   build: {
     outDir,
     lib: {

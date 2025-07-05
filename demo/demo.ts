@@ -1,6 +1,5 @@
 import { Pane } from 'tweakpane';
 import { EyeDropperPolyfill } from '../src/eyedropper';
-import type { EyeDropper } from '../src/types';
 import { isEyeDropperSupported } from '../src/support';
 
 const isSupported = isEyeDropperSupported();
@@ -43,7 +42,7 @@ function createSettings() {
       title: 'Get Color',
     })
     .on('click', async () => {
-      const instance: EyeDropper = PARAMS.enabled || !isSupported ? new EyeDropperPolyfill() : new window.EyeDropper();
+      const instance = PARAMS.enabled || !isSupported ? new EyeDropperPolyfill() : new window.EyeDropper();
       const result = await instance.open();
       PARAMS.color = result.sRGBHex;
       pane.refresh();
