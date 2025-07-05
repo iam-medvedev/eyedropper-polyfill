@@ -1,0 +1,34 @@
+name: test
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn add --cached
+
+      - name: Install Playwright binaries
+        run: yarn playwright install --with-deps
+
+      - name: Check types
+        run: yarn types
+
+      - name: Unit Tests
+        run: yarn test:unit
+
+      - name: Browser Tests
+        run: yarn test:browser

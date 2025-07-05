@@ -3,8 +3,15 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "module": "commonjs",
-    "target": "es2017",
-    "strict": true
+    "target": "esnext",
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "strictNullChecks": true
   },
   "include": ["src", "demo", "window.d.ts"],
   "exclude": ["node_modules", "build"]
