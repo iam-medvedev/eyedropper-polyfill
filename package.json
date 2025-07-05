@@ -23,6 +23,7 @@
   "scripts": {
     "dev": "parcel ./demo/index.html",
     "build": "NODE_ENV=production vite build",
+    "build:pages": "parcel build demo/index.html --target default",
     "release": "semantic-release",
     "types": "tsc --noEmit",
     "test:browser": "vitest --project=browser",
@@ -61,5 +62,10 @@
     "node": "24.3.0",
     "yarn": "1.22.19"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "targets": {
+    "default": {
+      "distDir": "pages"
+    }
+  }
 }
