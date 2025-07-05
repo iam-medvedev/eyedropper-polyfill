@@ -1,4 +1,4 @@
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas-pro';
 import { Magnifier } from './magnifier';
 import { errors, type Point } from './utils';
 import type { EyeDropper, ColorSelectionOptions, ColorSelectionResult } from './types';

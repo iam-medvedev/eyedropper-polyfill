@@ -44,7 +44,7 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
-    "html2canvas": "^1.4.1"
+    "html2canvas-pro": "^1.5.11"
   },
   "prettier": {
     "singleQuote": true,

@@ -3686,7 +3686,7 @@ __metadata:
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@tweakpane/core": "npm:^2.0.5"
     "@types/node": "npm:^24.0.7"
-    html2canvas: "npm:^1.4.1"
+    html2canvas-pro: "npm:^1.5.11"
     parcel: "npm:^2.15.4"
     prettier: "npm:^3.6.2"
     rollup-plugin-uglify: "npm:^6.0.4"
@@ -4221,13 +4221,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html2canvas@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "html2canvas@npm:1.4.1"
+"html2canvas-pro@npm:^1.5.11":
+  version: 1.5.11
+  resolution: "html2canvas-pro@npm:1.5.11"
   dependencies:
     css-line-break: "npm:^2.1.0"
     text-segmentation: "npm:^1.0.3"
-  checksum: 10/595790810557a1d4287f07b6ead49aed4f169f08eb00e20c1f030b93344003e84797d28cd8a220e8ec1b78641d460ca6add11b8531960725526f11a7b9fa9900
+  checksum: 10/4a8c1df898ff1449ffc20f4b173ef3f1ff6ad096f6405b12100285279b099f22f8c207381be4715d1085e095d8a9d09e4809b67a3cb745c648956fa73b569279
   languageName: node
   linkType: hard
 
