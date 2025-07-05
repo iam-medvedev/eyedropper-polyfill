@@ -4,6 +4,8 @@
 
 This package was inspired by the EyeDropper API and the need for a consistent color selection mechanism across various browsers where the EyeDropper API is not [natively supported](https://caniuse.com/mdn-api_eyedropper).
 
+<img src="https://raw.githubusercontent.com/iam-medvedev/eyedropper-polyfill/refs/heads/main/demo/preview.gif" width="500" />
+
 [DEMO](https://stackblitz.com/edit/vitejs-vite-qwd1pv?file=main.js)
 
 ## Table of Contents
@@ -30,6 +32,12 @@ This package was inspired by the EyeDropper API and the need for a consistent co
 
 ```bash
 yarn add eyedropper-polyfill
+```
+
+or
+
+```bash
+bun add eyedropper-polyfill
 ```
 
 or
