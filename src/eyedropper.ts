@@ -1,18 +1,7 @@
+import html2canvas from 'html2canvas';
 import { Magnifier } from './magnifier';
 import { errors, type Point } from './utils';
-import html2canvas from 'html2canvas';
-
-interface ColorSelectionOptions {
-  signal?: AbortSignal;
-}
-
-interface ColorSelectionResult {
-  sRGBHex: string;
-}
-
-interface EyeDropper {
-  open(options?: ColorSelectionOptions): Promise<ColorSelectionResult>;
-}
+import type { EyeDropper, ColorSelectionOptions, ColorSelectionResult } from './types';
 
 /** Global `isOpen` state */
 const isOpenState = {
@@ -108,11 +97,11 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Creates fake screenshot of page and assign it to the body
    */
   private async createScreenshot() {
-    this.canvas = await html2canvas(document.documentElement, {
+    this.canvas = await html2canvas(document.body, {
       allowTaint: true,
       useCORS: true,
-      height: window.innerHeight,
-      width: window.innerWidth,
+      height: document.body.scrollHeight,
+      width: document.body.scrollWidth,
     });
 
     this.addCanvasStyle(this.canvas);
@@ -230,8 +219,6 @@ export class EyeDropperPolyfill implements EyeDropper {
       left: '0px',
       zIndex: 999999,
       opacity: 0,
-      width: '100%',
-      height: '100%',
     });
   }
 }

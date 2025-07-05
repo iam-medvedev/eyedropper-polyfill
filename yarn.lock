@@ -2351,6 +2351,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tweakpane/core@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@tweakpane/core@npm:2.0.5"
+  checksum: 10/329dd120b26abd2059dc929d37ade52bf823d631965e4cdd8fc402dd4faebd85be9a3c95069def09a937fd1a8d7364b23f490b8efe2737076fbbba210c657e1e
+  languageName: node
+  linkType: hard
+
 "@types/argparse@npm:1.0.38":
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
@@ -3677,12 +3684,14 @@ __metadata:
     "@semantic-release/github": "npm:11.0.3"
     "@semantic-release/npm": "npm:12.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
+    "@tweakpane/core": "npm:^2.0.5"
     "@types/node": "npm:^24.0.7"
     html2canvas: "npm:^1.4.1"
     parcel: "npm:^2.15.4"
     prettier: "npm:^3.6.2"
     rollup-plugin-uglify: "npm:^6.0.4"
     semantic-release: "npm:^24.2.5"
+    tweakpane: "npm:^4.0.5"
     typescript: "npm:^5.8.3"
     vite: "npm:^7.0.0"
     vite-plugin-dts: "npm:^4.5.4"
@@ -7545,6 +7554,13 @@ __metadata:
     debug: "npm:^4.3.6"
     make-fetch-happen: "npm:^14.0.1"
   checksum: 10/880219a55e9575fcbf2c15129284a13d093fb2a053874151df59b11511d1ba097df359deae7b4e731b16fc3abd8fceda5125a167ec0d16eb926a32b8f778faa8
+  languageName: node
+  linkType: hard
+
+"tweakpane@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "tweakpane@npm:4.0.5"
+  checksum: 10/7719a15ce96dd2b936b277239ccb18ee6a75ed2416a6bdacfc537515d909da6edd50161b12e91441ace5243efad3a14a98fe6e5475cae2617d7647a197117e64
   languageName: node
   linkType: hard
 
