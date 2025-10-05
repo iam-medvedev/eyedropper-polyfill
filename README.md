@@ -4,6 +4,8 @@
 
 This package was inspired by the EyeDropper API and the need for a consistent color selection mechanism across various browsers where the EyeDropper API is not [natively supported](https://caniuse.com/mdn-api_eyedropper).
 
+[![Baseline Status: Eyedropper](https://baseline.js.org/features/eyedropper/static-adaptive.svg)](https://webstatus.dev/features/eyedropper)
+
 <img src="https://raw.githubusercontent.com/iam-medvedev/eyedropper-polyfill/refs/heads/main/demo/preview.gif" width="500" />
 
 [DEMO](https://iam-medvedev.github.io/eyedropper-polyfill/)
