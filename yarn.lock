@@ -4136,7 +4136,7 @@ __metadata:
     "@types/node": "npm:^24.3.0"
     "@vitest/browser": "npm:^3.2.4"
     happy-dom: "npm:^18.0.1"
-    html2canvas-pro: "npm:^1.5.11"
+    html2canvas-pro: "npm:^1.6.6"
     parcel: "npm:^2.15.4"
     playwright: "npm:^1.54.2"
     prettier: "npm:^3.6.2"
@@ -4684,13 +4684,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html2canvas-pro@npm:^1.5.11":
-  version: 1.5.11
-  resolution: "html2canvas-pro@npm:1.5.11"
+"html2canvas-pro@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "html2canvas-pro@npm:1.6.6"
   dependencies:
     css-line-break: "npm:^2.1.0"
     text-segmentation: "npm:^1.0.3"
-  checksum: 10/4a8c1df898ff1449ffc20f4b173ef3f1ff6ad096f6405b12100285279b099f22f8c207381be4715d1085e095d8a9d09e4809b67a3cb745c648956fa73b569279
+  checksum: 10/f401d36388d14a4f59fc30cdfce103594acddd9c6ed184bde560cad3ac83a77c2de434d6043b461eb8a23ad545f22b7d068411fe330816b8b2846a19bbe64df0
   languageName: node
   linkType: hard
 
