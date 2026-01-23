@@ -2,6 +2,6 @@ import { isEyeDropperSupported } from './support';
 import { attachPolyfill } from './attach';
 export * from './types';
 
-if (!isEyeDropperSupported()) {
+if (typeof window !== 'undefined' && !isEyeDropperSupported()) {
   attachPolyfill();
 }
