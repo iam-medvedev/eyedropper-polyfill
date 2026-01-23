@@ -18,14 +18,14 @@
     "./package.json",
     "./README.md"
   ],
-  "main": "./dist/eyedropper-polyfill.umd.js",
+  "main": "./dist/eyedropper-polyfill.umd.cjs",
   "module": "./dist/eyedropper-polyfill.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/eyedropper-polyfill.js",
-      "require": "./dist/eyedropper-polyfill.umd.js",
+      "require": "./dist/eyedropper-polyfill.umd.cjs",
       "default": "./dist/eyedropper-polyfill.js"
     }
   },
