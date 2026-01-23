@@ -12,6 +12,7 @@
     "polyfill",
     "colorpicker"
   ],
+  "type": "module",
   "files": [
     "./dist",
     "./package.json",
@@ -20,6 +21,16 @@
   "main": "./dist/eyedropper-polyfill.umd.js",
   "module": "./dist/eyedropper-polyfill.mjs",
   "types": "./dist/index.d.ts",
+  "browser": "./dist/eyedropper-polyfill.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/eyedropper-polyfill.mjs",
+      "require": "./dist/eyedropper-polyfill.umd.js",
+      "default": "./dist/eyedropper-polyfill.mjs"
+    }
+  },
+  "sideEffects": true,
   "scripts": {
     "dev": "parcel ./demo/index.html",
     "build": "NODE_ENV=production vite build",
