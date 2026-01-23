@@ -17,6 +17,7 @@ This package was inspired by the EyeDropper API and the need for a consistent co
   - [Features](#features)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [TypeScript Support](#typescript-support)
     - [Opening the EyeDropper](#opening-the-eyedropper)
     - [Aborting](#aborting)
   - [Limitations](#limitations)
@@ -63,6 +64,18 @@ import 'eyedropper-polyfill';
 ```
 
 It will create EyeDropper support via `window.EyeDropper`.
+
+### TypeScript Support
+
+If the import is located in a different file than where you're using the `EyeDropper` API, you need to add the package to the `types` array in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["eyedropper-polyfill"]
+  }
+}
+```
 
 ### Opening the EyeDropper
 
