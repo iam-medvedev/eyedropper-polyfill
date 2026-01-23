@@ -21,7 +21,6 @@
   "main": "./dist/eyedropper-polyfill.umd.js",
   "module": "./dist/eyedropper-polyfill.mjs",
   "types": "./dist/index.d.ts",
-  "browser": "./dist/eyedropper-polyfill.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
