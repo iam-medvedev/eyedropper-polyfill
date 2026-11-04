@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "module": "commonjs",
     "target": "esnext",
     "strict": true,
@@ -11,7 +10,8 @@
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitOverride": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "demo", "window.d.ts"],
   "exclude": ["node_modules", "build"]
