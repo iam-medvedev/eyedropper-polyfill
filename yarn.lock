@@ -3161,13 +3161,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base64-arraybuffer@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "base64-arraybuffer@npm:1.0.2"
-  checksum: 10/15e6400d2d028bf18be4ed97702b11418f8f8779fb8c743251c863b726638d52f69571d4cc1843224da7838abef0949c670bde46936663c45ad078e89fee5c62
-  languageName: node
-  linkType: hard
-
 "before-after-hook@npm:^4.0.0":
   version: 4.0.0
   resolution: "before-after-hook@npm:4.0.0"
@@ -3714,15 +3707,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-line-break@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "css-line-break@npm:2.1.0"
-  dependencies:
-    utrie: "npm:^1.0.2"
-  checksum: 10/e75cae40de511026228d4fa69e8d464895714f8899880b8268a446b57f0faa84b490ba1bdda5ed9e7f38f99ab947c6bc941bb505d8119c49072db079c1cacea5
-  languageName: node
-  linkType: hard
-
 "cssesc@npm:^3.0.0":
   version: 3.0.0
   resolution: "cssesc@npm:3.0.0"
@@ -4192,7 +4176,7 @@ __metadata:
     "@types/node": "npm:^24.3.0"
     "@vitest/browser": "npm:^3.2.4"
     happy-dom: "npm:^18.0.1"
-    html2canvas-pro: "npm:^1.6.6"
+    html2canvas-pro: "npm:^2.6.2"
     parcel: "npm:^2.15.4"
     playwright: "npm:^1.54.2"
     prettier: "npm:^3.6.2"
@@ -4688,13 +4672,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html2canvas-pro@npm:^1.6.6":
-  version: 1.6.6
-  resolution: "html2canvas-pro@npm:1.6.6"
-  dependencies:
-    css-line-break: "npm:^2.1.0"
-    text-segmentation: "npm:^1.0.3"
-  checksum: 10/f401d36388d14a4f59fc30cdfce103594acddd9c6ed184bde560cad3ac83a77c2de434d6043b461eb8a23ad545f22b7d068411fe330816b8b2846a19bbe64df0
+"html2canvas-pro@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "html2canvas-pro@npm:2.6.2"
+  checksum: 10/823519f54e1673a20a28b716d4153b144004d7ac587114224f8e5eba83910219fc23351bf4833e10fcacfb186f3fb24999cdabb12af1864a5d874a86860a8c93
   languageName: node
   linkType: hard
 
@@ -8070,15 +8051,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"text-segmentation@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "text-segmentation@npm:1.0.3"
-  dependencies:
-    utrie: "npm:^1.0.2"
-  checksum: 10/86191de83f09b96f356628c3dbaf6d281eda46a4dd4c94c3827495428871b9dd44ead4ef4cdf06a188b08a3b83e3943c5911841422b55286b121ba9e04c846dd
-  languageName: node
-  linkType: hard
-
 "text-table@npm:~0.2.0":
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
@@ -8481,15 +8453,6 @@ __metadata:
   version: 3.11.0
   resolution: "utility-types@npm:3.11.0"
   checksum: 10/a3c51463fc807ed04ccc8b5d0fa6e31f3dcd7a4cbd30ab4bc6d760ce5319dd493d95bf04244693daf316f97e9ab2a37741edfed8748ad38572a595398ad0fdaf
-  languageName: node
-  linkType: hard
-
-"utrie@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "utrie@npm:1.0.2"
-  dependencies:
-    base64-arraybuffer: "npm:^1.0.2"
-  checksum: 10/0c9458380bf3113f425a268e3d605aef163bfbaea62bf24de517b62b6e6744394d8ef1cdd9b07423359aec5ed402baab4bb2c5beec64f674ec635dc2f8dbd4bf
   languageName: node
   linkType: hard
 
