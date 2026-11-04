@@ -232,6 +232,11 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Canvas styles creator
    */
   private addCanvasStyle(canvas: HTMLCanvasElement) {
+    // Square cursor around the magnified pixel
+    const cursorSize = 8;
+    const cursorSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${cursorSize}" height="${cursorSize}"><rect x=".5" y=".5" width="${cursorSize - 1}" height="${cursorSize - 1}" fill="none" stroke="#aaa"/></svg>`;
+    const cursorUrl = `data:image/svg+xml,${encodeURIComponent(cursorSvg)}`;
+
     Object.assign(canvas.style, {
       position: 'fixed',
       top: '0px',
@@ -241,6 +246,7 @@ export class EyeDropperPolyfill implements EyeDropper {
       opacity: 0,
       transform: `scale(${this.magnification.scale})`,
       imageRendering: 'pixelated',
+      cursor: `url(${cursorUrl}) ${cursorSize / 2} ${cursorSize / 2}, crosshair`,
     });
   }
 }
