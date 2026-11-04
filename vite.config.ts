@@ -1,27 +1,25 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { uglify } from 'rollup-plugin-uglify';
 import path from 'path';
 
-const outDir = path.resolve(__dirname, './dist');
+const outDir = path.resolve(import.meta.dirname, './dist');
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   plugins: [
     dts({
-      tsconfigPath: path.resolve(__dirname, './tsconfig.build.json'),
+      tsconfigPath: path.resolve(import.meta.dirname, './tsconfig.build.json'),
     }),
   ],
   build: {
     outDir,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(import.meta.dirname, 'src/index.ts'),
       name: 'eyedropper-polyfill',
     },
-    minify: 'esbuild',
     sourcemap: !isProduction,
-    rollupOptions: {
-      plugins: [uglify()],
+    rolldownOptions: {
+      output: { minify: true, globals: { 'html2canvas-pro': 'html2canvas' } },
       external: ['html2canvas-pro'],
     },
   },
